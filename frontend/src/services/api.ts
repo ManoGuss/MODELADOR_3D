@@ -6,3 +6,9 @@ export async function api<T>(path:string, method='GET', body?:unknown):Promise<T
   }
   return response.json();
 }
+export async function upload<T>(path:string, content:Blob|ArrayBuffer, query:Record<string,string>):Promise<T> {
+  const params = new URLSearchParams(query);
+  const response = await fetch(`/api${path}?${params}`, {method:'POST',headers:{'Content-Type':'application/octet-stream'},body:content,signal:AbortSignal.timeout(120000)});
+  if(!response.ok){const data=await response.json().catch(()=>({}));throw new Error(typeof data.detail==='string'?data.detail:`Não foi possível importar o arquivo (${response.status}).`)}
+  return response.json();
+}

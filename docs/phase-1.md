@@ -24,11 +24,20 @@
 Frontend, backend, viewport, projetos, banco/storage e diagnóstico da Fase 1.
 Nenhum modelo gerado ou fixture é apresentado como resultado real.
 
+## IMPLEMENTAÇÃO ADICIONAL — PIPELINE DE ASSETS
+
+- Contratos persistidos para assets, versões, variantes, jobs, exports e settings.
+- Importação real de GLB autocontido, imagens PNG/JPG/WEBP, WAV PCM e partículas procedurais.
+- Validação de GLB, hierarquia, índices, faces degeneradas, normais, UV, skins, clips, texturas e hashes.
+- Jobs persistidos em worker sequencial com prioridade, cancelamento, retry e SSE.
+- Manifest v1, SHA-256, LICENSES.txt, ZIP de projeto e nomes Unreal (`SM_`, `SK_`, `T_`, etc.).
+- Exportação FBX via Blender instalado com round trip de validação.
+- Perfis low VRAM/balanced/performance e provider ComfyUI local com gate de licença.
+
 ## PENDENTE
 
-Fases 2–10: concept, inputs multimodais, jobs/workers, providers locais, modelos 3D,
-seleção/gizmo de assets, materiais/UV/texturas, versões/variantes, rig/animação/timeline,
-partículas/shaders/VFX, GLB/FBX/ZIP e Unreal Bridge.
+Concept editável/upload multimodal, modelos 3D, seleção/gizmo no viewport, materiais/texturas,
+rig/animação/timeline, shaders/VFX e Unreal Bridge.
 Arquitetura de tradução de todas as strings para outros idiomas ainda pendente; UI atual é pt-BR.
 
 ## DEPENDÊNCIAS
@@ -45,7 +54,8 @@ Licenciamento de pesos Hunyuan/FLUX não aprovado nesta fase; providers permanec
 ## LIMITAÇÕES
 
 - A entrega cobre a Fase 1; não é ainda o produto integral de produção das dez fases.
-- Sem seleção/gizmo porque não há pipeline de assets nesta fase. F restaura a câmera da origem.
+- A viewport ainda não carrega o GLB importado nem oferece seleção/gizmo; o asset é persistido e listado.
+- Sem Unreal Bridge compilado e sem ComfyUI/checkpoint configurado; essas limitações são exibidas claramente.
 - Sem recuperação de mudanças que ainda não chegaram ao autosave, migração entre schemas futuros ou backup automatizado.
 - Diagnóstico detecta driver NVIDIA, mas não certifica runtime CUDA/ROCm nem capacidade de inferência.
 - Blender é procurado no PATH; ausência detectada não prova que não exista em outro diretório.

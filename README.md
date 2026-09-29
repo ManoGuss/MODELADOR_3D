@@ -1,7 +1,8 @@
 # FORGE — AI 3D Game Asset Studio
 
-Fase 1: workspace 3D local funcional em português, com projetos SQLite e diagnóstico real.
-Geração por IA, importação de modelos, rigging e exportação Unreal ainda não estão implementados.
+Fase 1 + pipeline de assets local: workspace 3D em português, projetos SQLite, diagnóstico real,
+importação/validação GLB, jobs persistidos, manifest/ZIP e exportação FBX validada pelo Blender instalado.
+Geração por IA e importação automática na Unreal ainda dependem de provider/checkpoint e plugin Bridge.
 Não há modelos de demonstração nem resultados simulados.
 
 ## Executar no Windows
